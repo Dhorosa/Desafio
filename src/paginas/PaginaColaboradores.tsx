@@ -80,15 +80,20 @@ const niveisHierarquicos: ValoresFormulario['hierarchyLevel'][] = [
   'Gestor',
 ]
 const modelosTrabalho: ValoresFormulario['workModel'][] = ['Presencial', 'Hibrido', 'Remoto']
-const cargosPorDepartamento: Record<string, string[]> = {
-  Design: ['Designer Junior', 'Designer Pleno', 'UI Designer'],
-  TI: ['Analista de Suporte', 'Desenvolvedor Front-end', 'Desenvolvedor Back-end'],
-  'Tecnologia da InformaÃ§Ã£o': ['Analista de Suporte', 'Desenvolvedor Front-end', 'Desenvolvedor Back-end'],
-  Marketing: ['Analista de Marketing', 'Social Media', 'Copywriter'],
-  Produto: ['Analista de Produto', 'Product Owner', 'Product Manager'],
-  Financeiro: ['Analista Financeiro', 'Assistente Financeiro', 'Controlador Financeiro'],
-  RH: ['Analista de RH', 'Assistente de RH', 'Recrutador'],
-  'RelaÃ§Ãµes Humanas': ['Analista de RH', 'Assistente de RH', 'Recrutador'],
+
+const cargosPorDepartamentoNormalizado: Record<string, string[]> = {
+  design: ['Designer Junior', 'Designer Pleno', 'UI Designer'],
+  ti: ['Analista de Suporte', 'Desenvolvedor Front-end', 'Desenvolvedor Back-end'],
+  'tecnologia da informacao': [
+    'Analista de Suporte',
+    'Desenvolvedor Front-end',
+    'Desenvolvedor Back-end',
+  ],
+  marketing: ['Analista de Marketing', 'Social Media', 'Copywriter'],
+  produto: ['Analista de Produto', 'Product Owner', 'Product Manager'],
+  financeiro: ['Analista Financeiro', 'Assistente Financeiro', 'Controlador Financeiro'],
+  rh: ['Analista de RH', 'Assistente de RH', 'Recrutador'],
+  'relacoes humanas': ['Analista de RH', 'Assistente de RH', 'Recrutador'],
 }
 
 const valoresIniciais: ValoresFormulario = {
@@ -113,12 +118,6 @@ const normalizarTexto = (valor: string) =>
     .toLowerCase()
     .trim()
 
-const cargosPorDepartamentoNormalizado = Object.fromEntries(
-  Object.entries(cargosPorDepartamento).map(([departamento, cargos]) => [
-    normalizarTexto(departamento),
-    cargos,
-  ]),
-)
 
 function PaginaColaboradores() {
   const { usuario, sair } = usarAutenticacao()
