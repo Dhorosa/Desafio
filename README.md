@@ -1,10 +1,11 @@
 # Desafio - Cadastro de Colaboradores
 
-Aplicação web para gestão de colaboradores e departamentos, com autenticação no Firebase, filtros, edição em etapas e persistência no Firestore.
+Aplicacao web para gestao de colaboradores e departamentos, com autenticacao no Firebase, filtros, edicao em etapas e persistencia no Firestore.
 
 ## Acesso online
 
-- App: `link a definir após o deploy`
+- App: https://desafio-weld-rho.vercel.app
+- GitHub: https://github.com/Dhorosa/Desafio
 
 ## Tecnologias usadas
 
@@ -19,13 +20,13 @@ Aplicação web para gestão de colaboradores e departamentos, com autenticaçã
 
 ## Como executar localmente
 
-### 1. Instale as dependências
+### 1. Instale as dependencias
 
 ```bash
 npm install
 ```
 
-### 2. Crie o arquivo `.env.local`
+### 2. Crie o arquivo .env.local
 
 No Windows (PowerShell):
 
@@ -39,9 +40,9 @@ No Mac/Linux:
 cp .env.example .env.local
 ```
 
-### 3. Preencha o `.env.local`
+### 3. Preencha o .env.local
 
-Use as variáveis do seu projeto Firebase:
+Use as variaveis do seu projeto Firebase:
 
 ```env
 VITE_FIREBASE_API_KEY=...
@@ -60,27 +61,27 @@ npm run dev
 
 ### 5. Abra no navegador
 
-- [http://127.0.0.1:5173](http://127.0.0.1:5173)
+- http://127.0.0.1:5173
 
 ## Acesso de teste
 
-Se o Firebase estiver configurado com autenticação por e-mail e senha, use um usuário válido criado no Authentication.
+Se o Firebase estiver configurado com autenticacao por e-mail e senha, use um usuario valido criado no Authentication.
 
 ## Funcionalidades
 
 - Login com Firebase Authentication
 - Rotas protegidas
-- Página 404
-- Cadastro, edição e exclusão de colaboradores
-- Exclusão em massa de colaboradores
-- Cadastro, edição e exclusão de departamentos
-- Exclusão em massa de departamentos
+- Pagina 404
+- Cadastro, edicao e exclusao de colaboradores
+- Exclusao em massa de colaboradores
+- Cadastro, edicao e exclusao de departamentos
+- Exclusao em massa de departamentos
 - Filtros por nome, e-mail e departamento
-- Formulário em etapas
+- Formulario em etapas
 - Regra de gestor por departamento
 
 ## Se der erro ao iniciar
 
-- Verifique se o arquivo se chama exatamente `.env.local`
-- Verifique se todas as variáveis do Firebase foram preenchidas
-- Reinicie o `npm run dev` depois de alterar o `.env.local`
+- Verifique se o arquivo se chama exatamente .env.local
+- Verifique se todas as variaveis do Firebase foram preenchidas
+- Reinicie o npm run dev depois de alterar o .env.local
