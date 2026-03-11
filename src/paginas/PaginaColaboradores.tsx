@@ -113,6 +113,13 @@ const normalizarTexto = (valor: string) =>
     .toLowerCase()
     .trim()
 
+const cargosPorDepartamentoNormalizado = Object.fromEntries(
+  Object.entries(cargosPorDepartamento).map(([departamento, cargos]) => [
+    normalizarTexto(departamento),
+    cargos,
+  ]),
+)
+
 function PaginaColaboradores() {
   const { usuario, sair } = usarAutenticacao()
   const [colaboradores, setColaboradores] = useState<Colaborador[]>([])
@@ -207,7 +214,8 @@ function PaginaColaboradores() {
   )
 
   const cargosDisponiveis = useMemo(() => {
-    const cargosBase = cargosPorDepartamento[departamentoSelecionado] ?? []
+    const cargosBase =
+      cargosPorDepartamentoNormalizado[normalizarTexto(departamentoSelecionado)] ?? []
 
     if (cargoSelecionado && !cargosBase.includes(cargoSelecionado)) {
       return [cargoSelecionado, ...cargosBase]
@@ -221,6 +229,25 @@ function PaginaColaboradores() {
       setValue('manager', '')
     }
   }, [nivelHierarquicoSelecionado, setValue])
+
+  useEffect(() => {
+    if (departamentoSelecionado.length === 0) {
+      setValue('role', '')
+      return
+    }
+
+    const cargosBase =
+      cargosPorDepartamentoNormalizado[normalizarTexto(departamentoSelecionado)] ?? []
+
+    if (cargosBase.length === 0) {
+      setValue('role', '')
+      return
+    }
+
+    if (cargoSelecionado && !cargosBase.includes(cargoSelecionado)) {
+      setValue('role', '')
+    }
+  }, [cargoSelecionado, departamentoSelecionado, setValue])
 
   useEffect(() => {
     if (nivelHierarquicoSelecionado === 'Gestor') {
@@ -894,7 +921,12 @@ function PaginaColaboradores() {
                                 name="role"
                                 control={control}
                                 render={({ field }) => (
-                                  <Select labelId="role-label" label="Cargo" {...field}>
+                                  <Select
+                                    labelId="role-label"
+                                    label="Cargo"
+                                    disabled={departamentoSelecionado.length === 0}
+                                    {...field}
+                                  >
                                     {cargosDisponiveis.map((cargo) => (
                                       <MenuItem key={cargo} value={cargo}>
                                         {cargo}

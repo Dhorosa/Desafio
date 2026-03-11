@@ -100,6 +100,26 @@ export default function PaginaLogin() {
                   </Typography>
                 </Box>
 
+                <Alert
+                  severity="info"
+                  sx={{
+                    alignItems: 'flex-start',
+                    '& .MuiAlert-message': {
+                      width: '100%',
+                    },
+                  }}
+                >
+                  <Stack spacing={0.5}>
+                    <Typography sx={{ fontWeight: 700 }}>Acesso de demonstracao</Typography>
+                    <Typography variant="body2">
+                      E-mail: <strong>test@defafio.com</strong>
+                    </Typography>
+                    <Typography variant="body2">
+                      Senha: <strong>123321</strong>
+                    </Typography>
+                  </Stack>
+                </Alert>
+
                 {erroLogin && <Alert severity="error">{erroLogin}</Alert>}
 
                 <TextField
